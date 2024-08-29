@@ -1,8 +1,7 @@
 `include "defines.v"
 
 module IFStage(
-    input clk,
-    input rst,
+    input clk, rst, 
     input jump, pcsrc, flush_decode ,stall_pc,
     input [`WIDTH-1:0] pc_branch, pc_jump, 
     output wire [`WIDTH-1:0] instr, pc_fetch

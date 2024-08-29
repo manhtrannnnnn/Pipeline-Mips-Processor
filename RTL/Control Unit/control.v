@@ -2,9 +2,9 @@
 
 module control(
   input [5:0] opcode, funct,
-  output reg regwrite_decode, memtoreg_decode,
-  output reg memwrite_decode, alusrc_decode,
-  output reg regdst_decode, jump_decode, branch_decode,
+  output  regwrite_decode, memtoreg_decode,
+  output  memwrite_decode, alusrc_decode,
+  output  regdst_decode, jump_decode, branch_decode,
   output reg [1:0] branch_condition,
   output reg [3:0] alucontrol_decode
 );
