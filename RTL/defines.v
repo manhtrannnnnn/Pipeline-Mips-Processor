@@ -2,9 +2,10 @@
 
 
 // Opcode for instruction
-`define R_op    6'b000000 //R-type
-
-`define lw_op   6'b100011 //I-type
+//R-type
+`define R_op    6'b000000 
+//I-type
+`define lw_op   6'b100011 
 `define sw_op   6'b101011
 `define addi_op 6'b001000
 `define andi_op 6'b001100
@@ -12,7 +13,8 @@
 `define slti_op 6'b001010
 `define beq_op  6'b000100
 `define bne_op  6'b000101
-`define jump_op 6'b000010 //J-type
+//J-type 
+`define jump_op 6'b000010
 
 // Function for R-type
 `define add_funct 6'b100000
@@ -36,12 +38,6 @@
 `define EXE_SRL 4'b0111
 `define EXE_NO_OPERATION 4'b1111
 
-
-// Using for branch condition
-`define beq 2'b11
-`define bne 2'b01
-`define not_branch 2'b00
-
 // Using for control
 `define R_control     7'b1000100
 `define lw_control    7'b1101000
@@ -52,3 +48,9 @@
 `define beq_control   7'b0000001
 `define bne_control   7'b0000001
 `define jump_control  7'b0000010
+
+// Using for branch condition
+`define beq 2'b11
+`define bne 2'b01
+`define not_branch 2'b00
+

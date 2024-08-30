@@ -5,7 +5,7 @@ module MEM2WB(
     input regwrite_mem, memtoreg_mem,
     input [`WIDTH-1:0] aluout_mem, readdata_mem,
     input [`WIDTH-1:0] regaddr_mem,
-    output reg regwrite_wb, memtoreg_wb,
+    output  regwrite_wb, memtoreg_wb,
     output [`WIDTH-1:0] aluout_wb, readdata_wb,
     output [4:0] regaddr_wb
 );

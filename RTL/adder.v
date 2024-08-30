@@ -1,10 +1,10 @@
 `include "defines.v"
 
 module adder(
-  input [`WIDTH-1:0] a, b,
+  input [`WIDTH-1:0] in1, in2,
   output [`WIDTH-1:0] sum
 );
 
-  assign sum = a + b;
+  assign sum = in1 + in2;
 
 endmodule

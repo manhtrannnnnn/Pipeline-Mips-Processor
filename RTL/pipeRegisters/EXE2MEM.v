@@ -6,10 +6,10 @@ module EXE2MEM(
     input [`WIDTH-1:0] aluout,
     input [`WIDTH-1:0] writedata_exe,
     input [4:0] regaddr_exe,
-    output reg regwrite_mem, memtoreg_mem, memwrite_mem,
-    output reg [`WIDTH-1:0] aluout_mem, 
-    output reg [`WIDTH-1:0] writedata_mem,
-    output reg [4:0] regaddr_mem
+    output  regwrite_mem, memtoreg_mem, memwrite_mem,
+    output  [`WIDTH-1:0] aluout_mem, 
+    output  [`WIDTH-1:0] writedata_mem,
+    output  [4:0] regaddr_mem
 );
     always@(posedge clk) begin
         if(!rst) begin

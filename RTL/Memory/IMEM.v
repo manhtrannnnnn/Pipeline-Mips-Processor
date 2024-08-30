@@ -2,7 +2,7 @@
 
 module IMEM (
     input   [`WIDTH-1:0]  pc,
-    output wire [`WIDTH-1:0] instr
+    output  [`WIDTH-1:0] instr
 );
   reg [`WIDTH-1:0] instr_memory[31:0];
 

@@ -4,7 +4,7 @@ module DMEM(
     input clk,
     input memwrite,
     input [`WIDTH-1:0] address, data_in,
-    output wire [`WIDTH-1:0] readdata_mem
+    output wire [`WIDTH-1:0] readdata
 );
     always@(posedge clk) begin
         if(memwrite) begin
@@ -12,5 +12,5 @@ module DMEM(
         end
     end 
 
-    assign readdata_mem = mem[address[`WIDTH-1:2]];
+    assign readdata = mem[address[`WIDTH-1:2]];
 endmodule
