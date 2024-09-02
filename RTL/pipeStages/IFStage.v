@@ -1,4 +1,5 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
+
 
 module IFStage(
     input clk, rst, 

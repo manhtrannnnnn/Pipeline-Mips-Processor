@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
 
 module mux4to1(
     input [`WIDTH-1:0] in0, in1, in2, in3,

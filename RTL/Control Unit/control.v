@@ -1,4 +1,5 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
+
 
 module control(
   input [5:0] opcode, funct,

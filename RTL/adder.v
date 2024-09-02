@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
 
 module adder(
   input [`WIDTH-1:0] in1, in2,
@@ -8,3 +8,4 @@ module adder(
   assign sum = in1 + in2;
 
 endmodule
+

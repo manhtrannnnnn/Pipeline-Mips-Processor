@@ -1,11 +1,11 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
 
 module hazardUnit(
     input branch_decode,
     input [4:0] Rs_decode, Rt_decode, Rs_exe, Rt_exe,
     input memtoreg_exe, regwrite_exe,
     input [4:0] regaddr_exe, 
-    input regwrite_mem, [4:0] regaddr_mem, memtoreg_mem,
+    input regwrite_mem, memtoreg_mem, [4:0] regaddr_mem, 
     input regwrite_wb, [4:0] regaddr_wb,
     output stall_pc, stall_decode,
     output reg forwardA_decode, forwardB_decode,
@@ -16,7 +16,7 @@ module hazardUnit(
 reg lwstall, branchstall;
 wire tmp;
 
-assign tmp = lwstall || branchstall;
+assign tmp = lwstall | branchstall;
 assign stall_pc = tmp;
 assign stall_decode = tmp;
 assign flush_exe = tmp;

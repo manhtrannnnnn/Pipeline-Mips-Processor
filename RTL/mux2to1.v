@@ -1,9 +1,9 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
 
-module mux2to1 (
-  input [`WIDTH-1:0] in0, in1,
+module mux2to1 #(parameter Len = 32)(
+  input [Len-1:0] in0, in1,
   input sel,
-  output [`WIDTH-1:0] out
+  output [Len-1:0] out
 );
 
   assign out = sel ? in1 : in0;

@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
 
 module REG(
   input           clk, rst,
@@ -7,14 +7,14 @@ module REG(
   input   [4:0]   address_wb,
   input           regwrite,
   input   [`WIDTH-1:0]  data_wb,
-  output  reg [`WIDTH-1:0]  data1,
-  output  reg [`WIDTH-1:0]  data2
+  output  [`WIDTH-1:0]  data1,
+  output  [`WIDTH-1:0]  data2
 );
   integer i;
-  reg [31:0] REGISTER[31:0];
+  reg [`WIDTH-1:0] REGISTER[31:0];  // Register file with 32 registers, each `WIDTH` bits wide
 
-  // Write data on rising edge of clk (first half of the cycle)
-  always @(posedge clk) begin
+  // Reset and Write operation on the negative edge of the clock
+  always @(negedge clk) begin
     if (!rst) begin
       // Reset all registers to 0
       for (i = 0; i < 32; i = i + 1) begin
@@ -25,10 +25,8 @@ module REG(
     end
   end 
 
-  // Read data on falling edge of clk (second half of the cycle)
-  always @(negedge clk) begin
-    data1 <= (address1 != 0) ? REGISTER[address1] : 0;
-    data2 <= (address2 != 0) ? REGISTER[address2] : 0;
-  end
+  // Combinational read logic
+  assign data1 = (address1 != 0) ? REGISTER[address1] : 0;
+  assign data2 = (address2 != 0) ? REGISTER[address2] : 0;
 
 endmodule

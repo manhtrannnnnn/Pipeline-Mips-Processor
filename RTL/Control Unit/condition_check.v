@@ -1,4 +1,5 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
+
 
 module condition_check(
   input [`WIDTH-1:0] in1, in2,

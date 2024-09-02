@@ -1,4 +1,5 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
+
 
 module DMEM(
     input clk,
@@ -6,7 +7,8 @@ module DMEM(
     input [`WIDTH-1:0] address, data_in,
     output wire [`WIDTH-1:0] readdata
 );
-    always@(posedge clk) begin
+    reg [`WIDTH-1:0] mem[`WIDTH:0];
+    always @(posedge clk) begin
         if(memwrite) begin
             mem[address[`WIDTH-1:2]] <= data_in;
         end

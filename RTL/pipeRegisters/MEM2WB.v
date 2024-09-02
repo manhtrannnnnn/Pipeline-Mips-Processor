@@ -1,13 +1,14 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
+
 
 module MEM2WB(
     input clk, rst,
     input regwrite_mem, memtoreg_mem,
     input [`WIDTH-1:0] aluout_mem, readdata_mem,
-    input [`WIDTH-1:0] regaddr_mem,
-    output  regwrite_wb, memtoreg_wb,
-    output [`WIDTH-1:0] aluout_wb, readdata_wb,
-    output [4:0] regaddr_wb
+    input [4:0] regaddr_mem,
+    output reg  regwrite_wb, memtoreg_wb,
+    output reg [`WIDTH-1:0] aluout_wb, readdata_wb,
+    output reg [4:0] regaddr_wb
 );
     always@(posedge clk) begin
         if(!rst) begin

@@ -1,12 +1,13 @@
-`include "defines.v"
+`include "D:/BACH KHOA/Internship/pipeline-processor/RTL/defines.v"
+
 
 module IF2ID(
     input clk, rst,
     input stall_decode, flush_decode,
     input [`WIDTH-1:0] pc_fetch,
     input [`WIDTH-1:0] instr_fetch,
-    output [`WIDTH-1:0] pc_decode,
-    output [`WIDTH-1:0] instr_decode
+    output reg [`WIDTH-1:0] pc_decode,
+    output reg [`WIDTH-1:0] instr_decode
 );
 
     always @(posedge clk) begin

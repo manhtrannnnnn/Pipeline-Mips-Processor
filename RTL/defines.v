@@ -42,6 +42,7 @@
 `define R_control     7'b1000100
 `define lw_control    7'b1101000
 `define sw_control    7'b0011000
+`define addi_control  7'b1001000
 `define andi_control  7'b1001000
 `define ori_control   7'b1001000
 `define slti_control  7'b1001000
