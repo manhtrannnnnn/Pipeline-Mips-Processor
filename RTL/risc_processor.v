@@ -30,7 +30,7 @@ module risc_processor(
     wire [4:0] regaddr_mem;
 
     //Hazards Unit
-    wire stall_pc, stall_decode, forwardA_decode, forwardB_decode, flush_exe;
+    wire stall_pc, stall_decode, forwardA_decode, forwardB_decode, flush_exe, stall_compare;
     wire [1:0] forwardA_exe, forwardB_exe;
 
     // Memory Stage
@@ -47,13 +47,13 @@ module risc_processor(
 
 // Instruction Fetch Stage
     // Stage
-    IFStage ifstage(clk, rst, jump_decode, pcsrc_decode, flush_decode, stall_pc, pc_branch, pc_jump, instr_fetch, pc_fetch);
+    IFStage ifstage(clk, rst, jump_decode, pcsrc_decode, stall_pc, pc_branch, pc_jump, instr_fetch, pc_fetch);
     // Register
     IF2ID if2id(clk, rst, stall_decode, flush_decode, pc_fetch, instr_fetch, pc_decode, instr_decode);
 
 // Instruction Decode Stage
     // Stage
-    IDStage idstage(clk, rst, instr_decode, pc_decode, result_wb, regaddr_wb, forwardA_decode, forwardB_decode, regwrite_wb, regwrite_decode, memtoreg_decode, memwrite_decode, alusrc_decode, regdst_decode, jump_decode, branch_decode, alucontrol_decode, pcsrc_decode, flush_decode, pc_branch, pc_jump, signext_decode, data1_decode, data2_decode);
+    IDStage idstage(clk, rst, instr_decode, pc_decode, result_wb, aluout_mem, regaddr_wb, forwardA_decode, forwardB_decode, stall_compare , regwrite_wb, regwrite_decode, memtoreg_decode, memwrite_decode, alusrc_decode, regdst_decode, jump_decode, branch_decode, alucontrol_decode, pcsrc_decode, flush_decode, pc_branch, pc_jump, signext_decode, data1_decode, data2_decode);
     // Register
     ID2EXE id2exe(clk, rst, flush_exe, regwrite_decode, memtoreg_decode, memwrite_decode, alusrc_decode, regdst_decode, alucontrol_decode, data1_decode, data2_decode, instr_decode[25:21], instr_decode[20:16], instr_decode[15:11], instr_decode[10:6], signext_decode, regwrite_exe, memtoreg_exe, memwrite_exe, alusrc_exe, regdst_exe, alucontrol_exe, data1_exe, data2_exe, Rs_exe, Rt_exe, Rd_exe, shamt_exe, signext_exe);
 
@@ -75,6 +75,6 @@ module risc_processor(
 
 
 // Hazards Unit
-    hazardUnit hazard(branch_decode, instr_decode[25:21], instr_decode[20:16], Rs_exe, Rt_exe, memtoreg_exe, regwrite_exe, regaddr_exe, regwrite_mem, memtoreg_mem, regaddr_mem, regwrite_wb, regaddr_wb, stall_pc, stall_decode, forwardA_decode, forwardB_decode, flush_exe, forwardA_exe, forwardB_exe);
+    hazardUnit hazard(branch_decode, instr_decode[25:21], instr_decode[20:16], Rs_exe, Rt_exe, memtoreg_exe, regwrite_exe, regaddr_exe, regwrite_mem, memtoreg_mem, regaddr_mem, regwrite_wb, regaddr_wb, stall_pc, stall_decode, stall_compare, forwardA_decode, forwardB_decode, flush_exe, forwardA_exe, forwardB_exe);
 
 endmodule

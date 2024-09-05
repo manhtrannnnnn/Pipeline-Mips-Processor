@@ -15,8 +15,8 @@ module ALU(
       `EXE_OR:  aluout = val1 | val2;
       `EXE_SLT: aluout = (val1 < val2);
       `EXE_NOR: aluout = ~(val1 | val2);  
-      `EXE_SLL: aluout = val1 << shamt;
-      `EXE_SRL: aluout = val1 >> shamt;
+      `EXE_SLL: aluout = val2 << shamt;
+      `EXE_SRL: aluout = val2 >> shamt;
       `EXE_NO_OPERATION: aluout = 0;
       default: aluout = 0;
     endcase

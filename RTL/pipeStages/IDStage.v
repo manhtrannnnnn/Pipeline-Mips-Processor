@@ -3,9 +3,9 @@
 
 module IDStage(
     input clk, rst,
-    input [`WIDTH-1:0] instr_decode, pc_decode, result_wb,
+    input [`WIDTH-1:0] instr_decode, pc_decode, result_wb, aluout_mem,
     input [4:0] regaddr_wb,
-    input forwardA_decode, forwardB_decode,
+    input forwardA_decode, forwardB_decode, stall_compare,
     input regwrite_wb,
     output regwrite_decode, memtoreg_decode, memwrite_decode, alusrc_decode, regdst_decode, jump_decode, branch_decode,
     output [3:0] alucontrol_decode,
@@ -24,9 +24,9 @@ module IDStage(
     control c(instr_decode[31:26], instr_decode[5:0], regwrite_decode, memtoreg_decode, memwrite_decode, alusrc_decode, regdst_decode, jump_decode, branch_decode, branch_condition, alucontrol_decode);
 
     //Condition Check
-    mux2to1 mux_data1(data1_decode, result_wb, forwardA_decode, data_in1);
-    mux2to1 mux_data2(data2_decode, result_wb, forwardB_decode, data_in2);
-    condition_check compare(data_in1, data_in2, branch_condition, branch_check);
+    mux2to1 mux_data1(data1_decode, aluout_mem, forwardA_decode, data_in1);
+    mux2to1 mux_data2(data2_decode, aluout_mem, forwardB_decode, data_in2);
+    condition_check compare(data_in1, data_in2, stall_compare, branch_condition, branch_check);
 
     //Register File
     REG registerfile(clk, rst, instr_decode[25:21], instr_decode[20:16], regaddr_wb, regwrite_wb, result_wb, data1_decode, data2_decode);

@@ -3,7 +3,7 @@
 
 module IFStage(
     input clk, rst, 
-    input jump_decode, pcsrc_decode, flush_decode ,stall_pc,
+    input jump_decode, pcsrc_decode, stall_pc,
     input [`WIDTH-1:0] pc_branch, pc_jump, 
     output wire [`WIDTH-1:0] instr_fetch, pc_fetch
 );

@@ -5,9 +5,11 @@ module hazardUnit(
     input [4:0] Rs_decode, Rt_decode, Rs_exe, Rt_exe,
     input memtoreg_exe, regwrite_exe,
     input [4:0] regaddr_exe, 
-    input regwrite_mem, memtoreg_mem, [4:0] regaddr_mem, 
-    input regwrite_wb, [4:0] regaddr_wb,
-    output stall_pc, stall_decode,
+    input regwrite_mem, memtoreg_mem, 
+    input [4:0] regaddr_mem, 
+    input regwrite_wb, 
+    input [4:0] regaddr_wb,
+    output stall_pc, stall_decode, stall_compare, 
     output reg forwardA_decode, forwardB_decode,
     output flush_exe,
     output reg [1:0] forwardA_exe, forwardB_exe
@@ -20,6 +22,7 @@ assign tmp = lwstall | branchstall;
 assign stall_pc = tmp;
 assign stall_decode = tmp;
 assign flush_exe = tmp;
+assign stall_compare = tmp;
 
 // Forwarding Unit for Rs_exe
 always @(*) begin
